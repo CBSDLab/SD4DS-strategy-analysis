@@ -32,7 +32,7 @@ for (i in 1:length(results_list)) {
   } else {
     write_csv(tmp_df, file = "study_results.csv", append = TRUE)
   }
-    }
+}
 
 # Clean up the drive by deleting the individual simulation study results
 file_delete(results_list)
