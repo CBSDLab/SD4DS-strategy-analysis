@@ -1,7 +1,11 @@
-# <Description of exercise> 
-Provide an overview of what the exercises are about and what people will learn
+# Strategy Analysis
+This set of exercises from [SD4DS](https://github.com/CBSDLab/SD4DS) provides an introduction to designing and running a strategy analysis where one is interested in testing combinations of policies. Since the number of combinations potential strategies grows exponentially with the number of policies being considered, the computation time grows exponentially, which makes running a strategy analysis on the High Performance Computing (HPC) cluster appealing.  
 
-# Exercises
+The approach to conducting a strategy analysis builds on the approach from the [SD4DS-policy-analysis](https://github.com/CBSDLab/SD4DS-policy-analysis) using the "limits to growth v2.stmx" file with the policy switches added to the model. 
+
+## Overview
+
+
 
 ## 1. First exercise in set
 
