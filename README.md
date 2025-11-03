@@ -10,11 +10,12 @@ Setting up a strategy analysis begins with creating a study file that can be use
 
 Three exercises are offered:
 
-1.  **Setting up the stratgy file**. We need to set up the study design file for the study. What we will quickly discover is that we run out of computational resources.
+1.  **Setting up and running study 1**. We need to set up the study design file for the study. What we will quickly discover is that we run out of computational resources.
 2.  **Diagnosing and fixing the out of memory error.** We work through this and find ways to fix this and along the way, discover some important issues we need to consider in optimizing our code and simulation studies.
 3.  **Analyzing and plotting results.** The results generate a lot of data that we need to analyze and communicate. Some basic ideas are offered, but a lot of unexplored opportunities exist for creative data visualizations and explorations of high dimensional data sets.
+4.  **Normalizing effect sizes.** Study 1 assumed effect sizes could stack. This is often an unrealistic assumption. One way to address this is by normalizing the effect sizes of active interventions, which is shown in study 2.
 
-## 1. Setting up the strategy study file
+## 1. Setting up and running study 1
 
 To test different combinations of strategies, we first need to identify the variables we want to modify. The following R code ("create_study1.R") creates a list of names that we can use to generate a data frame for our simulation study.
 
