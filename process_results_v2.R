@@ -25,7 +25,7 @@ for (i in 1:length(results_list)) {
   # Append the processed data for simulation run i to the study file. Note
   # appending this to the file versus a working data frame avoids the problem
   # of R running out of memory
-  write_csv(processed_results, file = "study_results.csv", append = TRUE)
+  write_csv(tmp_df, file = "study_results.csv", append = TRUE)
 }
 
 # Clean up the drive by deleting the individual simulation study results
