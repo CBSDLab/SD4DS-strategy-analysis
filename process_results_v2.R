@@ -17,16 +17,22 @@ results_list <- list.files(pattern="Results_")
 # runs, hence the files are read in a numeric order
 for (i in 1:length(results_list)) {
   # Read in the .csv file for simulation run i
-  tmp<-read_csv(file=paste0("Results_",i,".csv"), show_col_types = FALSE)
+  tmp<-read_csv(file=results_list[i], show_col_types = FALSE)
   
   # Process the data for simulation run i
   tmp_df <- data.frame(Run = i,
                        tmp)
   # Append the processed data for simulation run i to the study file. Note
   # appending this to the file versus a working data frame avoids the problem
-  # of R running out of memory
-  write_csv(tmp_df, file = "study_results.csv", append = TRUE)
-}
+  # of R running out of memory. Note that the if else is needed so that the 
+  # first results file processed creates the variable names while the 
+  # subsequent result files append the data and ignore the column names
+  if (i==1) {
+    write_csv(tmp_df, file = "study_results.csv")
+  } else {
+    write_csv(tmp_df, file = "study_results.csv", append = TRUE)
+  }
+    }
 
 # Clean up the drive by deleting the individual simulation study results
 file_delete(results_list)
