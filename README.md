@@ -62,7 +62,7 @@ Running this, you'll likely get a cryptic email with an "OUT_OF_MEMORY" error si
 
 One option is to increase the amount of memory requested. While this might solve the immediate problem, it's not a good approach without some diagnosis of what is causing the out of memory error.
 
-## 2. Diagnosing and fixing OUT_OF_Memory error
+## 2. Diagnosing and fixing OUT_OF_MEMORY error
 
 When your job does not complete, there will be an output file of what happened that can provide some useful clues. Specifically, from this example, you should see a file with with a "serial-R.out" prefix. Opening this up should be similar to Figure 2.
 
