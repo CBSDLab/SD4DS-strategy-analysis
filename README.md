@@ -16,7 +16,7 @@ Three exercises are offered:
 
 ## 1. Setting up the strategy study file
 
-To test different combinations of strategies, we first need to identify the variables we want to modify. The following R code creates a list of names that we can use to generate a data frame for our simulation study.
+To test different combinations of strategies, we first need to identify the variables we want to modify. The following R code ("create_study1.R") creates a list of names that we can use to generate a data frame for our simulation study.
 
 ```         
 # Load and view the template
@@ -52,10 +52,10 @@ write_csv(strategy_study1_df,"strategy_study1.csv")
 
 Lastly, one will need to set up the shell script that we'll submit to SLURM as a batch job. The template is `simulate_study_template.sh` and the first version is `simulate_strategy_study.sh`. Note that you'll need to modify the latter with your email address.
 
-Excute this with the following command to see what happens.
+Execute this with the following command to see what happens.
 
 ```         
-simulate_strategy_study1.sh 
+sbatch simulate_strategy_study1.sh 
 ```
 
 Running this, you'll likely get a cryptic email with an "OUT_OF_MEMORY" error signaling that the job did not complete successfully and this was because you ran out of memory.
@@ -197,10 +197,28 @@ tmp %>%
 
 Doing this gives us the plot in Figure 1 where we see a jump in the outcome from strategy 0-0-1-1 to 0-1-1-1, which would suggest we might want to focus our subsequent analysis on the strategies with outcomes equal to or better than 0-1-1-1.
 
-**Figure 1.** Strategies sorted by Final Population
+**Figure 1.** Simulation results from study 1 of strategies sorted by Final Population
 
 ![](images/clipboard-62566347.png)
 
+## 4. Normalizing effect sizes
+
+The previous results (Figure 1) assumed constant effect sizes when multiple policies were active, that is, that we could add two or more interventions to *increase* the total effect without any constraint. This has a major limitation in that a single high leverage intervention might appear to have a worse outcome than two medium or low leverage interventions. To address this and run a more realistic analysis of strategies, we will normalize the effect sizes, e.g., one intervention will have an effect size of 0.5, two interventions will have 0.5/2.0 = 0.25 each so that 0.25 + 0.25 = 0.5 for a total effect size, and so on.
+
+To do this, we modify the "create_study1.R" script by adding effect sizes to our study.csv file that are normalized by the number of active interventions. The "create_study2.R" script starts out essentially the same as "create_study1.R" and adds code that will assign a normalized effect size to policies that are active for that scenario.
+
+We simulate the second study with the following Bash command:
+
+```         
+sbatch simulate_strategy_study2.sh
+```
+
+The results from the study 2 are shown in Figure 2. Notice the differences in the distributions from Figure 1. Notice how some strategies like 1-0-0-0 that were ranked much lower in Figure 1 are now near the top.
+
+**Figure 2.** Simulation results from study 2 of strategies sorted by Final Population
+
+![](images/clipboard-31424815.png)
+
 ## On your own
 
-This set of exericses only considered running analyses of different combinations of strategies as if they were stacked, which carries the implication of not being constrained in resources. How would you modify the analysis to reflect constrained reosurces?
+After replicating the exercises, adapt the scripts to analyze another model.
